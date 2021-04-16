@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="myFirstComponent" class="pl.pjatk.pawbad.MyFirstComponent" />
+    <bean id="mySecondComponent" class="pl.pjatk.pawbad.MySecondComponent">
+        <constructor-arg ref="myFirstComponent" />
+    </bean>
+    <bean id="myThirdComponent" class="pl.pjatk.pawbad.MyThirdComponent">
+        <constructor-arg index="0" ref="myFirstComponent" />
+        <constructor-arg index="1" ref="mySecondComponent" />
+        <constructor-arg index="2" ref="mySimpleClass" />
+        <constructor-arg index="3" ref="mySecondSimpleClass" />
+    </bean>
+    <bean id="componentConfig" class="pl.pjatk.pawbad.ComponentConfig"/>
+    <bean id="mySimpleClass" factory-bean="componentConfig" factory-method="mySimpleClass"/>
+    <bean id="mySecondSimpleClass" factory-bean="componentConfig" factory-method="mySecondSimpleClass"/>
+</beans>

@@ -1,0 +1,14 @@
+my:
+  custom:
+    property: Hello from application properties
+    access_value: false
+---
+spring:
+  config:
+    activate:
+      on-profile: jaz
+my:
+  custom:
+    property: Hello from JAZ
+    random: SomeRandomValue
+    access_value: true
